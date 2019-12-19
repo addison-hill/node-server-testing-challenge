@@ -28,10 +28,10 @@ describe("server", function() {
     it("should return 200 OK", function() {
       return request(server)
         .post("/api/users")
-        .send({ message: "Created User" })
+        .send({ name: "Created User" })
         .then(res => {
           expect(res.status).toBe(200);
-          expect(res.body).toEqual({ message: "Created User" });
+          expect(res.body.name).toEqual("Created User");
         });
     });
   });
