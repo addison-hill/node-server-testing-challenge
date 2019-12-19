@@ -19,4 +19,20 @@ describe("server", function() {
         });
     });
   });
+
+  describe("POST /api/users", function() {
+    beforeEach(async () => {
+      await db("users").truncate();
+    });
+
+    it("should return 200 OK", function() {
+      return request(server)
+        .post("/api/users")
+        .send({ message: "Created User" })
+        .then(res => {
+          expect(res.status).toBe(200);
+          expect(res.body).toEqual({ message: "Created User" });
+        });
+    });
+  });
 });
