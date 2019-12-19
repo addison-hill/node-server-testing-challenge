@@ -35,4 +35,15 @@ describe("server", function() {
         });
     });
   });
+
+  describe("DELETE /api/users", function() {
+    it("should return 200 OK", function() {
+      return request(server)
+        .delete("/api/users/1")
+        .then(res => {
+          expect(res.status).toBe(200);
+          expect(res.body).toEqual({ message: "deleted" });
+        });
+    });
+  });
 });

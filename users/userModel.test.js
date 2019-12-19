@@ -16,4 +16,13 @@ describe("users model", function() {
       expect(users).toHaveLength(1); // at least we know one record was inserted
     });
   });
+
+  describe("remove", function() {
+    it("should delete User", async function() {
+      const users = await db("users");
+      await Users.remove({ name: "Addison" });
+
+      expect(users).toHaveLength(0);
+    });
+  });
 });
