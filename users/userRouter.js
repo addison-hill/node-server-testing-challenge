@@ -1,10 +1,10 @@
 const express = require("express");
 
-const Users = require("./usersModel.js");
+const Users = require("./userModel.js");
 
 const router = express.Router();
 
-router.get("/users", (req, res) => {
+router.get("/", (req, res) => {
   Users.get()
     .then(user => {
       res.status(200).json(user);
@@ -14,7 +14,7 @@ router.get("/users", (req, res) => {
     });
 });
 
-router.post("/users", (req, res) => {
+router.post("/", (req, res) => {
   const user = req.body;
   Users.insert(user)
     .then(user => {
@@ -25,7 +25,7 @@ router.post("/users", (req, res) => {
     });
 });
 
-router.delete("/users/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
   const { id } = req.params;
   Users.remove(id)
     .then(deleted => {

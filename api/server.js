@@ -2,9 +2,12 @@ const express = require("express");
 
 const Users = require("../users/userModel");
 
+const UserRouter = require("../users/userRouter");
+
 const server = express();
 
 server.use(express.json());
+server.use("/api/users", UserRouter);
 
 server.get("/", (req, res) => {
   res.status(200).json({ message: "Hi Insomnia", dbenv: process.env.DB_ENV });
